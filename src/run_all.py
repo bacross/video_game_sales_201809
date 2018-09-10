@@ -15,7 +15,7 @@ df_vid_sales = pd.read_csv(cfg.csv_fpath)
 df_vid_sales_com = munge_df(df_vid_sales)
 
 ### build hierarchy
-df_vid_sales_com,hier_names,hiers,hier_lookup,hier = hr.build_hier(df_vid_sales_comhier_col_name ='Genre')
+df_vid_sales_com,hier_names,hiers,hier_lookup,hier = hr.build_hier(df_vid_sales_com,hier_col_name ='Genre')
 print(df_vid_sales_com.columns)
 
 ### compile stan model
