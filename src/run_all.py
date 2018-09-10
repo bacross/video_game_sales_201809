@@ -15,7 +15,7 @@ df_vid_sales = pd.read_csv(cfg.csv_fpath)
 df_vid_sales_com = munge_df(df_vid_sales)
 
 ### build hierarchy
-df_vid_sales_com,hier_names,hiers,hier_lookup,hier = hr.build_hier(df_vid_sales_com)
+df_vid_sales_com,hier_names,hiers,hier_lookup,hier = hr.build_hier(df_vid_sales_comhier_col_name ='Genre')
 print(df_vid_sales_com.columns)
 
 ### compile stan model
@@ -25,7 +25,7 @@ sm = hr.comp_stan(cfg.hier_stan_code)
 df_vid_sales_com_train,df_vid_sales_com_test= hr.parse_train_test(df_vid_sales_com,cfg.train_frac)
 
 ### config stan model data
-hier_data= hr.config_stan_data(df_vid_sales_com_train,hier_col_name ='Genre',hier_names=hier_names,hiers=hiers,hier_lookup=hier_lookup,hier=hier)
+hier_data= hr.config_stan_data(df_vid_sales_com_train,hier_names=hier_names,hiers=hiers,hier_lookup=hier_lookup,hier=hier)
 
 ### fit stan model
 fit = sm.sampling(data=hier_data)

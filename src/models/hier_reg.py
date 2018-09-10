@@ -12,14 +12,14 @@ def parse_train_test(ndf,frac):
     test = ndf.loc[~ndf.index.isin(train.index),:]
     return train,test
     
-def build_hier(ndata):
+def build_hier(ndata,hier_col_name):
     hier_names = ndata[hier_col_name].unique()
     hiers = len(hier_names)
     hier_lookup = dict(zip(hier_names, range(hiers)))
     hier = ndata['hier_code'] = ndata[hier_col_name].replace(hier_lookup)
     return ndata,hier_names,hiers,hier_lookup,hier
 
-def config_stan_data(ndata, hier_col_name,hier_names,hiers,hier_lookup,hier):
+def config_stan_data(ndata,hier_names,hiers,hier_lookup,hier):
     hier_data = {'N': len(ndata.log_Global_Sales),
                  'J': hiers,
                  'hier': hier + 1,  # stan counts start at 1
