@@ -3,8 +3,6 @@ import pandas as pd
 from etl.extract_data_from_zip import extract_data_from_zip as edfz
 from etl.get_kaggle import get_kaggle
 from etl.munge_df import munge_df
-from etl.parse_train_test import parse_train_test as ptt
-
 from models import hier_reg as hr
 
 ### download kaggle data if necessary
@@ -19,17 +17,14 @@ df_vid_sales_com = munge_df(df_vid_sales)
 ### compile stan model
 sm = hr.comp_stan(cfg.hier_stan_code)
 
-### parse into train/test
-df_vid_sales_com_train, df_vid_sales_com_test = ptt(df_vid_sales_com, frac=cfg.train_frac)
-
 ### config stan model data
-hier_data = hr.config_stan_data(df_vid_sales_com_train,hier_col_name ='Genre')
+hier_data,df_vid_sales_com_train,df_vid_sales_com_test = hr.config_stan_data(df_vid_sales_com_train,hier_col_name ='Genre',frac=cfg.train_frac)
 
 ### fit stan model
 fit = sm.sampling(data=hier_data)
 
 ### test out of sample fit
 mad = hr.pred_oos(fit,df_vid_sales_com_test)
-
+print(mad)
 
 print('this is the end')
