@@ -23,10 +23,13 @@ sm = hr.comp_stan(cfg.hier_stan_code)
 df_vid_sales_com_train, df_vid_sales_com_test = ptt(df_vid_sales_com, frac=cfg.train_frac)
 
 ### config stan model data
-# hier_data = hr.config_stan_data(df_vid_sales_com_train,hier_col_name = )
-print('this is the end')
+hier_data = hr.config_stan_data(df_vid_sales_com_train,hier_col_name ='Genre')
 
 ### fit stan model
+fit = sm.sampling(data=hier_data)
+
+### test out of sample fit
+mad = hr.pred_oos(fit,df_vid_sales_com_test)
 
 
-print('df loaded')
+print('this is the end')

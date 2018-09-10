@@ -15,7 +15,7 @@ def config_stan_data(ndata, hier_col_name):
     hier = ndata['hier_code'] = ndata[hier_col_name].replace(hier_lookup).values
     hier_data = {'N': len(ndata.log_Global_Sales),
                  'J': hiers,
-                 'county': hier + 1,  # stan counts start at 1
+                 'hier': hier + 1,  # stan counts start at 1
                  'x': ndata.Critic_Score,
                  'y': ndata.log_Global_Sales}
     return hier_data
