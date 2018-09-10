@@ -25,7 +25,7 @@ sm = hr.comp_stan(cfg.hier_stan_code)
 df_vid_sales_com_train,df_vid_sales_com_test= hr.parse_train_test(df_vid_sales_com,cfg.train_frac)
 
 ### config stan model data
-hier_data= hr.config_stan_data(df_vid_sales_com_train,hier_col_name ='Genre',hier_names,hiers,hier_lookup,hier)
+hier_data= hr.config_stan_data(df_vid_sales_com_train,hier_col_name ='Genre',hier_names=hier_names,hiers=hiers,hier_lookup=hier_lookup,hier=hier)
 
 ### fit stan model
 fit = sm.sampling(data=hier_data)
