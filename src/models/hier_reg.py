@@ -18,7 +18,7 @@ def config_stan_data(ndata, hier_col_name,frac):
     hier_lookup = dict(zip(hier_names, range(hiers)))
     hier = ndata['hier_code'] = ndata[hier_col_name].replace(hier_lookup).values
     ndata_train, ndata_test = parse_train_test(ndata,frac)
-    hier_data = {'N': len(ndata.log_Global_Sales),
+    hier_data = {'N': len(ndata_train.log_Global_Sales),
                  'J': hiers,
                  'hier': hier + 1,  # stan counts start at 1
                  'x': ndata_train.Critic_Score,
