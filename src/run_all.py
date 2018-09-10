@@ -26,12 +26,13 @@ df_vid_sales_com_train,df_vid_sales_com_test= hr.parse_train_test(df_vid_sales_c
 
 ### config stan model data
 hier_data= hr.config_stan_data(df_vid_sales_com_train,hier_names=hier_names,hiers=hiers,hier_lookup=hier_lookup,hier=hier)
+print(hier_data['N'],hier_data['J'])
 
 ### fit stan model
-fit = sm.sampling(data=hier_data)
+#fit = sm.sampling(data=hier_data)
 
 ### test out of sample fit
-mad = hr.pred_oos(fit,df_vid_sales_com_test)
-print(mad)
+#mad = hr.pred_oos(fit,df_vid_sales_com_test)
+#print(mad)
 
 print('this is the end')
