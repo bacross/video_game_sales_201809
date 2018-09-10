@@ -16,7 +16,7 @@ def build_hier(ndata):
     hier_names = ndata[hier_col_name].unique()
     hiers = len(hier_names)
     hier_lookup = dict(zip(hier_names, range(hiers)))
-    hier = ndata['hier_code'] = ndata[hier_col_name].replace(hier_lookup).
+    hier = ndata['hier_code'] = ndata[hier_col_name].replace(hier_lookup)
     return ndata,hier_names,hiers,hier_lookup,hier
 
 def config_stan_data(ndata, hier_col_name,hier_names,hiers,hier_lookup,hier):
