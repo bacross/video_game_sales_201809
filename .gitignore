@@ -1,0 +1,11 @@
+# data file types
+*.parq
+*.pkl
+*.pickle
+*.csv
+*.xlsx
+*.txt
+*.zip
+
+#compiled python code
+*.pyc
