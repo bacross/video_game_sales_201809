@@ -5,7 +5,7 @@ from etl.get_kaggle import get_kaggle
 from etl.munge_df import munge_df
 from etl.parse_train_test import parse_train_test as ptt
 
-from src.models import hier_reg as hr
+from models import hier_reg as hr
 
 ### download kaggle data if necessary
 if cfg.refresh_data_flag == True:
